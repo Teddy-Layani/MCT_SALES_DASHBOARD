@@ -1,0 +1,18 @@
+{
+    "opportunityByStatus": [
+        {   "date": "/Date(1530144000000+0530)/",
+            "status": "1", 
+            "description": "in Process", 
+            "quantity": "13"
+        },{ "date": "/Date(1530144000000+0530)/",
+            "status": "2", 
+            "description": "Pending", 
+            "quantity": "19"
+        }
+    ],
+    "leadSLA": [],
+    "leadStatus": [],
+    "meetingByBrand": [],
+    "leadByResponsible": [],
+    "meetingBySalesman": []
+}

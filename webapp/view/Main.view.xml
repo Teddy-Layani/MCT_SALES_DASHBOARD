@@ -1,0 +1,191 @@
+<mvc:View controllerName="zcrmsalesdashboard.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns:viz="sap.viz.ui5.controls"
+    xmlns:viz.data="sap.viz.ui5.data"
+    xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+    xmlns:layout="sap.ui.layout"
+    xmlns:f="sap.f"
+	xmlns:card="sap.f.cards"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <VBox>
+            <HBox>
+                <DatePicker/>
+            </HBox>
+            <HBox>
+            <f:Card class="sapUiMediumMargin" width="33%" height="50%">
+            <!-- <f:header>
+                <card:NumericHeader
+                    title="Opportunity By Status"
+                    number="11">
+                    <card:sideIndicators>
+                        <card:NumericSideIndicator
+                            title="Total"
+                            number="12"/>
+                    </card:sideIndicators>  
+                </card:NumericHeader>
+		    </f:header> -->
+            <f:content>    
+                <layout:FixFlex id='chartFixFlex' minFlexSize="250">
+                <layout:flexContent>
+                <viz:Popover id="idPopOver"></viz:Popover>
+                <viz:VizFrame id="idVizFrame" uiConfig="{applicationSet:'fiori'}"
+                    vizProperties="{title:{ text:'Opportunity By Status'},dataLabel:{visible:true,showTotal:true}}"
+                    height='100%' width="100%" vizType='donut'>
+                    <viz:dataset>
+                        <viz.data:FlattenedDataset data="{fakeModel>/opportunityByStatus}">
+                            <viz.data:dimensions>
+                                <viz.data:DimensionDefinition name="description"
+                                    value="{description}" />
+                            </viz.data:dimensions>
+                            <viz.data:measures>
+                                <viz.data:MeasureDefinition name="quantity"
+                                    value="{quantity}" />
+                            </viz.data:measures>
+                        </viz.data:FlattenedDataset>
+                    </viz:dataset>
+
+                    <viz:feeds>
+                        <viz.feeds:FeedItem uid="size" type="Measure"
+                            values="quantity" />
+                        <viz.feeds:FeedItem uid="color" type="Dimension"
+                            values="description" />
+                    </viz:feeds>
+                </viz:VizFrame>
+                </layout:flexContent>
+                            </layout:FixFlex>
+            </f:content>
+            </f:Card>
+            
+            
+            
+            <f:Card class="sapUiMediumMargin" width="33%">
+            <f:content>    
+                <layout:FixFlex id='chartFixFlex2' minFlexSize="250">
+                <layout:flexContent>
+                    <viz:Popover id="idPopOver2"></viz:Popover>
+                    <viz:VizFrame id="idVizFrame2" uiConfig="{applicationSet:'fiori'}"
+                        vizProperties="{title:{ text:'Lead By Status'},dataLabel:{visible:true,showTotal:true}}"
+                        height='100%' width="100%" vizType='bullet'>
+                        <viz:dataset>
+                            <viz.data:FlattenedDataset data="{fakeModel>/leadStatus}">
+                                <viz.data:dimensions>
+                                    <viz.data:DimensionDefinition name="description"
+                                        value="{description}" />
+                                </viz.data:dimensions>
+                                <viz.data:measures>
+                                    <viz.data:MeasureDefinition name="quantity"
+                                        value="{quantity}" />
+                                </viz.data:measures>
+                            </viz.data:FlattenedDataset>
+                        </viz:dataset>
+
+                        <viz:feeds>
+                            <viz.feeds:FeedItem id="feedActualValues" uid="actualValues" type="Measure"
+                                values="quantity" />
+                            <!-- <viz.feeds:FeedItem id="feedTargetValues" uid="targetValues" type="Measure"
+                                values="Target" />
+                            <viz.feeds:FeedItem id="feedAdditionalValues" uid="additionalValues" type="Measure"
+                                values="Additional Revenue" />
+                            <viz.feeds:FeedItem id="feedForecastValues" uid="forecastValues" type="Measure"
+                                values="Forecast" /> -->
+                            <viz.feeds:FeedItem id="feedCategoryAxis" uid="categoryAxis" type="Dimension"
+                                values="description" />
+                        </viz:feeds>
+                    </viz:VizFrame>
+                </layout:flexContent>
+                </layout:FixFlex>
+            </f:content>
+            </f:Card>
+
+            </HBox>
+            <HBox>
+
+            <f:Card class="sapUiMediumMargin" width="33%" height="50%">
+            <!-- <f:header>
+                <card:NumericHeader
+                    title="Opportunity By Status"
+                    number="11">
+                    <card:sideIndicators>
+                        <card:NumericSideIndicator
+                            title="Total"
+                            number="12"/>
+                    </card:sideIndicators>  
+                </card:NumericHeader>
+		    </f:header> -->
+            <f:content>    
+                <layout:FixFlex id='chartFixFlex3' minFlexSize="250">
+                <layout:flexContent>
+                <viz:Popover id="idPopOver3"></viz:Popover>
+                <viz:VizFrame id="idVizFrame3" uiConfig="{applicationSet:'fiori'}"
+                    vizProperties="{title:{ text:'Opportunity By Status'},dataLabel:{visible:true,showTotal:true}}"
+                    height='100%' width="100%" vizType='donut'>
+                    <viz:dataset>
+                        <viz.data:FlattenedDataset data="{fakeModel>/opportunityByStatus}">
+                            <viz.data:dimensions>
+                                <viz.data:DimensionDefinition name="description"
+                                    value="{description}" />
+                            </viz.data:dimensions>
+                            <viz.data:measures>
+                                <viz.data:MeasureDefinition name="quantity"
+                                    value="{quantity}" />
+                            </viz.data:measures>
+                        </viz.data:FlattenedDataset>
+                    </viz:dataset>
+
+                    <viz:feeds>
+                        <viz.feeds:FeedItem uid="size" type="Measure"
+                            values="quantity" />
+                        <viz.feeds:FeedItem uid="color" type="Dimension"
+                            values="description" />
+                    </viz:feeds>
+                </viz:VizFrame>
+                </layout:flexContent>
+                            </layout:FixFlex>
+            </f:content>
+            </f:Card>
+            
+            
+            
+            <f:Card class="sapUiMediumMargin" width="33%">
+            <f:content>    
+                <layout:FixFlex id='chartFixFlex4' minFlexSize="250">
+                <layout:flexContent>
+                    <viz:Popover id="idPopOver4"></viz:Popover>
+                    <viz:VizFrame id="idVizFrame4" uiConfig="{applicationSet:'fiori'}"
+                        vizProperties="{title:{ text:'Lead By Status'},dataLabel:{visible:true,showTotal:true}}"
+                        height='100%' width="100%" vizType='bullet'>
+                        <viz:dataset>
+                            <viz.data:FlattenedDataset data="{fakeModel>/leadStatus}">
+                                <viz.data:dimensions>
+                                    <viz.data:DimensionDefinition name="description"
+                                        value="{description}" />
+                                </viz.data:dimensions>
+                                <viz.data:measures>
+                                    <viz.data:MeasureDefinition name="quantity"
+                                        value="{quantity}" />
+                                </viz.data:measures>
+                            </viz.data:FlattenedDataset>
+                        </viz:dataset>
+
+                        <viz:feeds>
+                            <viz.feeds:FeedItem id="feedActualValues4" uid="actualValues" type="Measure"
+                                values="quantity" />
+                            <!-- <viz.feeds:FeedItem id="feedTargetValues" uid="targetValues" type="Measure"
+                                values="Target" />
+                            <viz.feeds:FeedItem id="feedAdditionalValues" uid="additionalValues" type="Measure"
+                                values="Additional Revenue" />
+                            <viz.feeds:FeedItem id="feedForecastValues" uid="forecastValues" type="Measure"
+                                values="Forecast" /> -->
+                            <viz.feeds:FeedItem id="feedCategoryAxis4" uid="categoryAxis" type="Dimension"
+                                values="description" />
+                        </viz:feeds>
+                    </viz:VizFrame>
+                </layout:flexContent>
+                </layout:FixFlex>
+            </f:content>
+            </f:Card>
+        </HBox>
+        </VBox>
+    </Page>
+</mvc:View>
