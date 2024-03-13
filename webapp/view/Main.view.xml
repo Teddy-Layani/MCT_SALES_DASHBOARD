@@ -27,18 +27,19 @@
                             vizProperties="{title:{ text:'Opportunity By Status'},dataLabel:{visible:true,showTotal:true}}">
                         <viz:dataset>
                             <viz.data:FlattenedDataset data="{fakeModel>/opportunityByStatus}">
+                            <!-- <viz.data:FlattenedDataset data="{/ZSTATUS_LEADSSet}"> -->
                                 <viz.data:dimensions>
-                                    <viz.data:DimensionDefinition name="description" value="{description}" />
+                                    <viz.data:DimensionDefinition name="Description" value="{Description}" />
                                 </viz.data:dimensions>
                                 <viz.data:measures>
-                                    <viz.data:MeasureDefinition name="quantity" value="{quantity}" />
+                                    <viz.data:MeasureDefinition name="CountTotal" value="{CountTotal}" />
                                 </viz.data:measures>
                             </viz.data:FlattenedDataset>
                         </viz:dataset>
 
                         <viz:feeds>
-                            <viz.feeds:FeedItem uid="size" type="Measure" values="quantity" />
-                            <viz.feeds:FeedItem uid="color" type="Dimension" values="description" />
+                            <viz.feeds:FeedItem uid="size" type="Measure" values="CountTotal" />
+                            <viz.feeds:FeedItem uid="color" type="Dimension" values="Description" />
                         </viz:feeds>
                     </viz:VizFrame>
                 </f:content>
@@ -124,33 +125,67 @@
             <f:Card class="sapUiMediumMargin" width="35rem" height="20rem">
                 <f:content>    
                     <viz:VizFrame id="idVizFrame4" uiConfig="{applicationSet:'fiori'}"
-                        vizProperties="{title:{ text:'Lead By Status'},dataLabel:{visible:true,showTotal:true}}"
-                        height='100%' width="100%" vizType='column'>
+                        vizProperties="{title:{ text: 'Test 01' },
+                                        dataLabel:{visible:true,showTotal:true}, 
+                                        categoryAxis:{
+                                            title: {visible: false}, 
+                                            label:{rotation: 'fixed', angle: '90'}
+                                            },
+                                        plotArea: { colorPalette: ['red', '#6e6e6e', '#711e82', '#40c7a1', '#969696'] }
+                                        }"
+                        height='100%' width="100%" vizType='column' selectData="onSelectData">
                         <viz:dataset>
-                            <viz.data:FlattenedDataset data="{fakeModel>/leadStatus}">
+                            <viz.data:FlattenedDataset data="{/ZLEADS_IN_CB_EXCPT_COUNTSet}">
                                 
                                 <viz.data:dimensions>
-                                    <viz.data:DimensionDefinition name="description"
-                                        value="{description}" />
+                                    <viz.data:DimensionDefinition name="PartnerName"
+                                        value="{PartnerName}" />
                                 </viz.data:dimensions>
                                 <viz.data:measures>
-                                    <viz.data:MeasureDefinition name="quantity"
-                                        value="{quantity}" />
+                                    <viz.data:MeasureDefinition name="CountTotal"
+                                        value="{CountTotal}" />
                                 </viz.data:measures>                                
                             </viz.data:FlattenedDataset>
                         </viz:dataset>
 
                         <viz:feeds>
                             <viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure"
-                                values="quantity" />
+                                values="CountTotal" />
                             <viz.feeds:FeedItem id='categoryAxisFeed' uid="categoryAxis" type="Dimension"
-                                values="description" />
+                                values="PartnerName" />
+                            <!-- <viz.feeds:FeedItem id='color' uid="color" type="Dimension"
+                                values="PartnerName" /> -->
                         </viz:feeds>
                     </viz:VizFrame>
                 </f:content>
             </f:Card>
+            <HBox  class="sapUiMediumMargin HBoxShadow" width="35rem" height="20rem" backgroundDesign="Solid" >
+                    <viz:VizFrame id="idVizFrame11" uiConfig="{applicationSet:'fiori'}"
+                        vizProperties="{title:{ text:'SLA לידים בחריגה'},dataLabel:{visible:true,showTotal:true}}"
+                        width="35rem" height="20rem" vizType='donut'>
+                        <viz:dataset>
+                            <viz.data:FlattenedDataset data="{/ZLEADS_IN_CB_EXCPT_COUNTSet}">
+                                <viz.data:dimensions>
+                                    <viz.data:DimensionDefinition name="PartnerName"
+                                        value="{PartnerName}" />
+                                </viz.data:dimensions>
+                                <viz.data:measures>
+                                    <viz.data:MeasureDefinition name="CountTotal"
+                                        value="{CountTotal}" />
+                                </viz.data:measures>
+                            </viz.data:FlattenedDataset>
+                        </viz:dataset>
 
-            <f:Card class="sapUiMediumMargin" width="35rem" height="20rem">
+                        <viz:feeds>
+                            <viz.feeds:FeedItem uid="size" type="Measure"
+                                values="CountTotal" />
+                            <viz.feeds:FeedItem uid="color" type="Dimension"
+                                values="PartnerName" />
+                        </viz:feeds>
+                    </viz:VizFrame>
+
+            </HBox>
+            <!-- <f:Card class="sapUiMediumMargin" width="35rem" height="20rem">
                 <f:content>    
                     <viz:VizFrame id="idVizFrame11" uiConfig="{applicationSet:'fiori'}"
                         vizProperties="{title:{ text:'Opportunity By Status'},dataLabel:{visible:true,showTotal:true}}"
@@ -176,7 +211,7 @@
                         </viz:feeds>
                     </viz:VizFrame>
                 </f:content>
-            </f:Card>            
+            </f:Card>             -->
 
         </HBox>
         </VBox>

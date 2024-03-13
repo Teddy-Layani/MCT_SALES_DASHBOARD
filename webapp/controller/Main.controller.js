@@ -10,6 +10,10 @@ sap.ui.define([
         return Controller.extend("zcrmsalesdashboard.controller.Main", {
             onInit: function () {
 
+            },
+
+            onSelectData: function(oEvent) {
+                debugger;
             }
         });
     });
